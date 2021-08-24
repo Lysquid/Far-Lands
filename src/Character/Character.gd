@@ -4,8 +4,8 @@ export (int) var speed = 120
 export (int) var jump_speed = 170
 export (int) var hold_jump_speed = 15
 export (int) var gravity = 18
-export (float, 0, 1.0) var friction = 0.5
-export (float, 0, 1.0) var acceleration = 0.25
+export (float, 0, 1.0) var friction = 0.4
+export (float, 0, 1.0) var acceleration = 0.15
 
 var velocity = Vector2.ZERO
 
@@ -28,10 +28,12 @@ func _physics_process(_delta: float):
 		$LeapTimer.start()
 		state_machine.travel("jump")
 		velocity.y -= jump_speed
-	elif Input.is_action_pressed("ui_select") and not $LeapTimer.is_stopped():
-		velocity.y -= hold_jump_speed
-		#velocity.y =- hold_jump_speed
-
+	elif Input.is_action_pressed("ui_select"):
+		if not $LeapTimer.is_stopped():
+			velocity.y -= hold_jump_speed
+		else:
+			$LeapTimer.stop()
+	
 	velocity = move_and_slide(velocity, Vector2.UP)
 	
 	if direction > 0:

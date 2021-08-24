@@ -3,10 +3,10 @@
 [ext_resource path="res://src/Character/Character.gd" type="Script" id=1]
 [ext_resource path="res://assets/herochar_spritesheet(new).png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=34]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 3, 6 )
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=2]
 resource_name = "attack"
 length = 0.4
 tracks/0/type = "value"
@@ -22,7 +22,7 @@ tracks/0/keys = {
 "values": [ 32, 34, 36, 38 ]
 }
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=3]
 resource_name = "dash"
 length = 0.3
 tracks/0/type = "value"
@@ -71,8 +71,7 @@ tracks/0/keys = {
 "values": [ 48, 49, 50 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "idle"
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -88,8 +87,7 @@ tracks/0/keys = {
 "values": [ 40, 41, 42, 43 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "jump"
+[sub_resource type="Animation" id=7]
 length = 0.3
 loop = true
 tracks/0/type = "value"
@@ -105,8 +103,7 @@ tracks/0/keys = {
 "values": [ 56, 57, 58 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "land"
+[sub_resource type="Animation" id=8]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -121,7 +118,7 @@ tracks/0/keys = {
 "values": [ 80, 81 ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=9]
 resource_name = "land quick"
 length = 0.1
 tracks/0/type = "value"
@@ -137,7 +134,7 @@ tracks/0/keys = {
 "values": [ 80 ]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=10]
 resource_name = "push"
 length = 0.6
 loop = true
@@ -154,7 +151,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19, 20, 21 ]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=11]
 resource_name = "push end"
 length = 0.4
 tracks/0/type = "value"
@@ -170,7 +167,7 @@ tracks/0/keys = {
 "values": [ 24, 25, 26, 27 ]
 }
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=12]
 resource_name = "roll"
 length = 0.3
 tracks/0/type = "value"
@@ -186,8 +183,7 @@ tracks/0/keys = {
 "values": [ 72, 73, 74 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "run"
+[sub_resource type="Animation" id=13]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -203,70 +199,70 @@ tracks/0/keys = {
 "values": [ 8, 9, 10, 11, 12, 13 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=8]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "die"
 
-[sub_resource type="AnimationNodeAnimation" id=17]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "fall"
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "idle"
 
-[sub_resource type="AnimationNodeAnimation" id=16]
+[sub_resource type="AnimationNodeAnimation" id=17]
 animation = "jump"
 
-[sub_resource type="AnimationNodeAnimation" id=25]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "land quick"
 
-[sub_resource type="AnimationNodeAnimation" id=18]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "land"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=20]
 animation = "run"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=11]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=12]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=19]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+[sub_resource type="AnimationNodeStateMachineTransition" id=21]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=22]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
-switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=26]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=27]
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=33]
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
 
-[sub_resource type="AnimationNodeStateMachine" id=14]
-states/die/node = SubResource( 8 )
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachine" id=31]
+states/die/node = SubResource( 14 )
 states/die/position = Vector2( 450, 172 )
-states/fall/node = SubResource( 17 )
+states/fall/node = SubResource( 15 )
 states/fall/position = Vector2( 158.918, 6.32399 )
-states/idle/node = SubResource( 9 )
+states/idle/node = SubResource( 16 )
 states/idle/position = Vector2( 331, 111 )
-states/jump/node = SubResource( 16 )
+states/jump/node = SubResource( 17 )
 states/jump/position = Vector2( 120.918, 143 )
-states/land/node = SubResource( 18 )
+states/land/node = SubResource( 19 )
 states/land/position = Vector2( 336.918, -20 )
-"states/land quick/node" = SubResource( 25 )
+"states/land quick/node" = SubResource( 18 )
 "states/land quick/position" = Vector2( 336.918, -85.846 )
-states/run/node = SubResource( 10 )
+states/run/node = SubResource( 20 )
 states/run/position = Vector2( 587, 54 )
-transitions = [ "idle", "run", SubResource( 11 ), "run", "idle", SubResource( 12 ), "idle", "die", SubResource( 13 ), "idle", "jump", SubResource( 19 ), "idle", "fall", SubResource( 20 ), "fall", "land", SubResource( 22 ), "land", "idle", SubResource( 23 ), "fall", "land quick", SubResource( 26 ), "land quick", "run", SubResource( 27 ), "jump", "fall", SubResource( 33 ) ]
+transitions = [ "idle", "run", SubResource( 21 ), "run", "idle", SubResource( 22 ), "idle", "die", SubResource( 23 ), "idle", "jump", SubResource( 24 ), "idle", "fall", SubResource( 25 ), "fall", "land", SubResource( 26 ), "land", "idle", SubResource( 27 ), "fall", "land quick", SubResource( 28 ), "land quick", "run", SubResource( 29 ), "jump", "fall", SubResource( 30 ) ]
 start_node = "idle"
 end_node = "die"
 graph_offset = Vector2( -81.0816, -112.46 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
 
 [node name="Character" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -275,34 +271,41 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 hframes = 8
 vframes = 15
-frame = 12
+frame = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
-shape = SubResource( 34 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/attack = SubResource( 29 )
-anims/dash = SubResource( 30 )
+anims/attack = SubResource( 2 )
+anims/dash = SubResource( 3 )
 anims/die = SubResource( 4 )
 anims/fall = SubResource( 5 )
-anims/idle = SubResource( 2 )
-anims/jump = SubResource( 6 )
-anims/land = SubResource( 3 )
-"anims/land quick" = SubResource( 24 )
-anims/push = SubResource( 31 )
-"anims/push end" = SubResource( 32 )
-anims/roll = SubResource( 28 )
-anims/run = SubResource( 7 )
+anims/idle = SubResource( 6 )
+anims/jump = SubResource( 7 )
+anims/land = SubResource( 8 )
+"anims/land quick" = SubResource( 9 )
+anims/push = SubResource( 10 )
+"anims/push end" = SubResource( 11 )
+anims/roll = SubResource( 12 )
+anims/run = SubResource( 13 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 14 )
+tree_root = SubResource( 31 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/playback = SubResource( 15 )
+parameters/playback = SubResource( 32 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = true
+smoothing_enabled = true
+drag_margin_left = 1.0
+drag_margin_right = 1.0
 
 [node name="LeapTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
 one_shot = true
 
 [node name="FloorTimer" type="Timer" parent="."]
