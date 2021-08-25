@@ -1,17 +1,25 @@
 extends KinematicBody2D
 
 export (int) var speed = 120
-export (int) var jump_speed = 170
+export (int) var jump_speed = 170 
 export (int) var hold_jump_speed = 15
 export (int) var gravity = 18
 export (float, 0, 1.0) var friction = 0.4
 export (float, 0, 1.0) var acceleration = 0.15
+export (float) var impulse_force = 1
 
 var velocity = Vector2.ZERO
 
 onready var state_machine = $AnimationTree.get("parameters/playback")
 
+var last_collider = null
+var prev_velocity
+
 func _physics_process(_delta: float):
+	move(_delta)
+	collide()
+	
+func move(_delta):
 	var direction = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if direction != 0:
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
@@ -34,7 +42,8 @@ func _physics_process(_delta: float):
 		else:
 			$LeapTimer.stop()
 	
-	velocity = move_and_slide(velocity, Vector2.UP)
+	prev_velocity = Vector2(velocity)
+	velocity = move_and_slide(velocity, Vector2.UP, false, 4, PI/4, false)
 	
 	if direction > 0:
 		$Sprite.set_flip_h(false)
@@ -50,5 +59,18 @@ func _physics_process(_delta: float):
 		if abs(velocity.x) < speed * 0.05:
 			state_machine.travel("idle")
 	else:
-		if velocity.y > 0:
+		if velocity.y > 0 and $FallTimer.is_stopped():
 			state_machine.travel("fall")
+			
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		var collider = collision.collider
+		if collider.is_in_group("island"):
+			if collider != last_collider:
+				collider.apply_central_impulse(Vector2(prev_velocity) * impulse_force)
+		last_collider = collider
+		$FallTimer.start()
+
+func collide():
+	pass
+	
