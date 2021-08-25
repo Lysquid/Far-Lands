@@ -16,10 +16,10 @@ var last_collider = null
 var prev_velocity
 
 func _physics_process(_delta: float):
-	move(_delta)
+	move()
 	collide()
 	
-func move(_delta):
+func move():
 	var direction = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	if direction != 0:
 		velocity.x = lerp(velocity.x, direction * speed, acceleration)
@@ -62,15 +62,15 @@ func move(_delta):
 		if velocity.y > 0 and $FallTimer.is_stopped():
 			state_machine.travel("fall")
 			
+
+
+func collide():
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
 		var collider = collision.collider
 		if collider.is_in_group("island"):
-			if collider != last_collider:
+			if collider.frozen:
 				collider.apply_central_impulse(Vector2(prev_velocity) * impulse_force)
-		last_collider = collider
+				collider.unfreeze()
 		$FallTimer.start()
-
-func collide():
-	pass
 	
