@@ -6,7 +6,7 @@ export (int) var hold_jump_speed = 15
 export (int) var gravity = 18
 export (float, 0, 1.0) var friction = 0.4
 export (float, 0, 1.0) var acceleration = 0.15
-export (float) var impulse_force = 1
+export (float) var impulse_force = 2
 
 var velocity = Vector2.ZERO
 
@@ -17,7 +17,7 @@ var prev_velocity
 
 func _physics_process(_delta: float):
 	move()
-	collide()
+	#collide()
 	
 func move():
 	var direction = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -61,16 +61,28 @@ func move():
 	else:
 		if velocity.y > 0 and $FallTimer.is_stopped():
 			state_machine.travel("fall")
-			
 
+
+
+	for index in get_slide_count():
+		var collision = get_slide_collision(index)
+		var collider = collision.collider
+		if collider.is_in_group("island"):
+			if collider.velocity.y < 0:
+				move_and_slide(collider.velocity)
+				#position += Vector2.UP * 50
+				print("ok")
+				break
 
 func collide():
 	for index in get_slide_count():
 		var collision = get_slide_collision(index)
 		var collider = collision.collider
 		if collider.is_in_group("island"):
-			if collider.frozen:
-				collider.apply_central_impulse(Vector2(prev_velocity) * impulse_force)
-				collider.unfreeze()
+			if collider.frozen and $FallTimer.is_stopped():
+				var impulse_direction = (prev_velocity - collision.normal).normalized()
+				var impusle_strength = - collision.normal.dot(prev_velocity) * impulse_force
+				collider.apply_central_impulse(impulse_direction * impusle_strength * collider.mass / 10)
+				#collider.unfreeze()
 		$FallTimer.start()
 	

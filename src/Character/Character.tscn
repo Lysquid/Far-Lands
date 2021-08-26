@@ -308,15 +308,27 @@ drag_margin_right = 1.0
 [node name="LeapTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
+__meta__ = {
+"_editor_description_": "Time the player can hold jump to make a leap / long jump"
+}
 
 [node name="FloorTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+__meta__ = {
+"_editor_description_": "Time the character is still considered on floor to jump when he falls from a cliff"
+}
 
 [node name="PressedJumpTimer" type="Timer" parent="."]
 wait_time = 0.1
 one_shot = true
+__meta__ = {
+"_editor_description_": "Time the game remembers the jump input, so if the character is in the air, he can jump once he lands"
+}
 
 [node name="FallTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+__meta__ = {
+"_editor_description_": "Time after which the player is considered falling (to avoid jittering land animation) "
+}
