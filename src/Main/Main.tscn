@@ -1,109 +1,32 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://ressources/tileset.tres" type="TileSet" id=1]
-[ext_resource path="res://src/Island/Island.gd" type="Script" id=2]
+[ext_resource path="res://src/Map/Map.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/End/End.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Character/Character.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/could.png" type="Texture" id=4]
-[ext_resource path="res://src/Island/IslandRigid.gd" type="Script" id=5]
-
-[sub_resource type="PhysicsMaterial" id=1]
-friction = 0.0
-bounce = 1.0
-
-[sub_resource type="LineShape2D" id=2]
-normal = Vector2( 1, 0 )
-
-[sub_resource type="LineShape2D" id=3]
-normal = Vector2( -1, 0 )
+[ext_resource path="res://src/Background/Background.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/Main/Main.gd" type="Script" id=5]
+[ext_resource path="res://music/C418 - Thunderbird.mp3" type="AudioStream" id=6]
 
 [node name="Main" type="Node"]
-
-[node name="Level" type="Node2D" parent="."]
-
-[node name="Turrain" type="StaticBody2D" parent="Level"]
-
-[node name="TileMap" type="TileMap" parent="Level/Turrain"]
-tile_set = ExtResource( 1 )
-cell_size = Vector2( 16, 16 )
-collision_use_parent = true
-format = 1
-tile_data = PoolIntArray( 1, 1, 0, 2, 7, 0, 26, 0, 65542, 27, 0, 524289, 65537, 0, 1, 65538, 0, 2, 65539, 0, 3, 65540, 6, 131072, 65546, 6, 1, 65547, 0, 5, 65552, 7, 0, 65556, 8, 0, 65557, 8, 0, 65558, 8, 0, 65563, 0, 65541, 131073, 0, 131072, 131074, 0, 65538, 131075, 0, 327680, 131076, 0, 65544, 131082, 0, 65542, 131083, 0, 458754, 131087, 0, 65542, 131088, 0, 524289, 131099, 0, 131077, 196609, 0, 262145, 196610, 0, 262146, 196611, 0, 196612, 196619, 0, 524291, 196620, 0, 65544, 196624, 0, 131077, 196626, 1, 0, 262152, 1, 0, 262162, 0, 1, 262163, 0, 3, 327688, 0, 1, 327689, 0, 3, 327693, 7, 0, 327698, 0, 262145, 327699, 0, 262147, 327700, 8, 0, 393224, 0, 262145, 393225, 0, 458756, 393226, 0, 65544, 393228, 6, 65536, 393229, 0, 1, 393230, 0, 3, 458754, 0, 1, 458755, 0, 393220, 458756, 0, 65544, 458764, 0, 65542, 458765, 0, 393218, 458766, 0, 327680, 458767, 0, 65544, 524290, 0, 196608, 524291, 0, 196612, 524301, 0, 196608, 524302, 0, 196612, 589834, 0, 524288, 589835, 0, 65544, 655366, 8, 0, 655368, 0, 65542, 655369, 0, 65543, 655370, 0, 524290, 720901, 0, 5, 720902, 8, 0, 720914, 8, 0, 786436, 0, 65542, 786437, 0, 524290, 786454, 0, 5, 851968, 0, 5, 851969, 6, 0, 851970, 6, 0, 851990, 0, 524291, 851991, 0, 524289, 851997, 0, 5, 917504, 0, 327685, 917505, 0, 2, 917506, 0, 3, 917527, 0, 524291, 917528, 0, 65544, 917532, 0, 1, 917533, 0, 458753, 983040, 0, 131072, 983041, 0, 65538, 983042, 0, 131076, 983055, 0, 5, 983068, 0, 131072, 983069, 0, 131076, 1048576, 0, 196608, 1048577, 0, 196609, 1048578, 0, 65539, 1048579, 0, 3, 1048590, 0, 524288, 1048591, 0, 524290, 1048603, 0, 1, 1048604, 0, 65537, 1048605, 0, 131076, 1114113, 0, 196608, 1114114, 0, 262146, 1114115, 0, 327682, 1114116, 0, 2, 1114117, 0, 2, 1114118, 0, 3, 1114125, 0, 65542, 1114126, 0, 524290, 1114138, 0, 1, 1114139, 0, 65537, 1114140, 0, 196611, 1114141, 0, 262147, 1179651, 0, 262145, 1179652, 0, 196609, 1179653, 0, 65538, 1179654, 0, 65539, 1179655, 0, 2, 1179656, 0, 2, 1179657, 0, 2, 1179658, 0, 3, 1179672, 0, 1, 1179673, 0, 2, 1179674, 0, 65537, 1179675, 0, 65538, 1179676, 0, 131076, 1245188, 0, 196608, 1245189, 0, 196609, 1245190, 0, 65538, 1245191, 0, 65538, 1245192, 0, 65538, 1245193, 0, 65538, 1245194, 0, 65539, 1245195, 0, 2, 1245196, 0, 2, 1245197, 0, 2, 1245198, 0, 2, 1245199, 0, 2, 1245200, 0, 2, 1245201, 0, 2, 1245202, 0, 2, 1245203, 0, 2, 1245204, 0, 2, 1245205, 0, 2, 1245206, 0, 2, 1245207, 0, 2, 1245208, 0, 65537, 1245209, 0, 65538, 1245210, 0, 65538, 1245211, 0, 196611, 1245212, 0, 262147, 1310725, 0, 131072, 1310726, 0, 65538, 1310727, 0, 65538, 1310728, 0, 65538, 1310729, 0, 65538, 1310730, 0, 65538, 1310731, 0, 65538, 1310732, 0, 65538, 1310733, 0, 65538, 1310734, 0, 65538, 1310735, 0, 65538, 1310736, 0, 65538, 1310737, 0, 65538, 1310738, 0, 65538, 1310739, 0, 65538, 1310740, 0, 65538, 1310741, 0, 65538, 1310742, 0, 65538, 1310743, 0, 65538, 1310744, 0, 65538, 1310745, 0, 65538, 1310746, 0, 65538, 1310747, 0, 131076, 1376261, 0, 262145, 1376262, 0, 262146, 1376263, 0, 196609, 1376264, 0, 65538, 1376265, 0, 65538, 1376266, 0, 65538, 1376267, 0, 65538, 1376268, 0, 65538, 1376269, 0, 65538, 1376270, 0, 65538, 1376271, 0, 65538, 1376272, 0, 65538, 1376273, 0, 65538, 1376274, 0, 65538, 1376275, 0, 65538, 1376276, 0, 65538, 1376277, 0, 65538, 1376278, 0, 65538, 1376279, 0, 65538, 1376280, 0, 65538, 1376281, 0, 65538, 1376282, 0, 65538, 1376283, 0, 131076, 1441799, 0, 131072, 1441800, 0, 65538, 1441801, 0, 65538, 1441802, 0, 65538, 1441803, 0, 65538, 1441804, 0, 65538, 1441805, 0, 65538, 1441806, 0, 65538, 1441807, 0, 65538, 1441808, 0, 65538, 1441809, 0, 65538, 1441810, 0, 65538, 1441811, 0, 65538, 1441812, 0, 65538, 1441813, 0, 65538, 1441814, 0, 65538, 1441815, 0, 65538, 1441816, 0, 65538, 1441817, 0, 65538, 1441818, 0, 196611, 1441819, 0, 262147, 1507335, 0, 262145, 1507336, 0, 196609, 1507337, 0, 65538, 1507338, 0, 65538, 1507339, 0, 65538, 1507340, 0, 65538, 1507341, 0, 65538, 1507342, 0, 65538, 1507343, 0, 65538, 1507344, 0, 65538, 1507345, 0, 65538, 1507346, 0, 65538, 1507347, 0, 65538, 1507348, 0, 65538, 1507349, 0, 65538, 1507350, 0, 65538, 1507351, 0, 65538, 1507352, 0, 65538, 1507353, 0, 196611, 1507354, 0, 196612, 1572872, 0, 262145, 1572873, 0, 196609, 1572874, 0, 65538, 1572875, 0, 65538, 1572876, 0, 65538, 1572877, 0, 65538, 1572878, 0, 65538, 1572879, 0, 65538, 1572880, 0, 65538, 1572881, 0, 65538, 1572882, 0, 65538, 1572883, 0, 65538, 1572884, 0, 65538, 1572885, 0, 65538, 1572886, 0, 65538, 1572887, 0, 65538, 1572888, 0, 196611, 1572889, 0, 262147, 1638409, 0, 196608, 1638410, 0, 196609, 1638411, 0, 65538, 1638412, 0, 65538, 1638413, 0, 65538, 1638414, 0, 65538, 1638415, 0, 65538, 1638416, 0, 65538, 1638417, 0, 65538, 1638418, 0, 65538, 1638419, 0, 65538, 1638420, 0, 65538, 1638421, 0, 65538, 1638422, 0, 65538, 1638423, 0, 196611, 1638424, 0, 262147, 1703946, 0, 262145, 1703947, 0, 262146, 1703948, 0, 196609, 1703949, 0, 65538, 1703950, 0, 65538, 1703951, 0, 65538, 1703952, 0, 65538, 1703953, 0, 65538, 1703954, 0, 65538, 1703955, 0, 65538, 1703956, 0, 65538, 1703957, 0, 65538, 1703958, 0, 196611, 1703959, 0, 196612, 1769484, 0, 262145, 1769485, 0, 196609, 1769486, 0, 65538, 1769487, 0, 65538, 1769488, 0, 65538, 1769489, 0, 65538, 1769490, 0, 65538, 1769491, 0, 65538, 1769492, 0, 65538, 1769493, 0, 65538, 1769494, 0, 131076, 1835021, 0, 196608, 1835022, 0, 262146, 1835023, 0, 262146, 1835024, 0, 262146, 1835025, 0, 262146, 1835026, 0, 262146, 1835027, 0, 262146, 1835028, 0, 262146, 1835029, 0, 262146, 1835030, 0, 262147 )
-
-[node name="RigidBody2D" type="RigidBody2D" parent="Level" groups=[
-"island",
-]]
-mode = 2
-physics_material_override = SubResource( 1 )
-gravity_scale = 0.0
 script = ExtResource( 5 )
 
-[node name="TileMap" type="TileMap" parent="Level/RigidBody2D"]
-tile_set = ExtResource( 1 )
-cell_size = Vector2( 16, 16 )
-collision_use_parent = true
-format = 1
-tile_data = PoolIntArray( 983050, 0, 1, 983051, 0, 393220, 983052, 0, 65544, 1048586, 0, 196608, 1048587, 0, 196612 )
+[node name="Background" parent="." instance=ExtResource( 4 )]
 
-[node name="RigidBody2D2" type="KinematicBody2D" parent="Level" groups=[
-"island",
-]]
-script = ExtResource( 2 )
-
-[node name="TileMap" type="TileMap" parent="Level/RigidBody2D2"]
-tile_set = ExtResource( 1 )
-cell_size = Vector2( 16, 16 )
-collision_use_parent = true
-format = 1
-tile_data = PoolIntArray( 917521, 6, 0, 917523, 3, 0, 983057, 0, 1, 983058, 0, 393220, 983059, 0, 65544, 1048593, 0, 262145, 1048594, 0, 262147 )
-
-[node name="Borders" type="StaticBody2D" parent="."]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Left" type="CollisionShape2D" parent="Borders"]
-shape = SubResource( 2 )
-
-[node name="Right" type="CollisionShape2D" parent="Borders"]
-position = Vector2( 480, 0 )
-shape = SubResource( 3 )
-
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -2
-
-[node name="Sky" type="CanvasLayer" parent="Background"]
-layer = -3
-
-[node name="ColorRect" type="ColorRect" parent="Background/Sky"]
-margin_right = 480.0
-margin_bottom = 270.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color( 0.694118, 0.823529, 0.956863, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="Background"]
-layer = -1
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/ParallaxBackground"]
-motion_scale = Vector2( 0.5, 0.5 )
-motion_mirroring = Vector2( 192, 260 )
-
-[node name="TextureRect" type="TextureRect" parent="Background/ParallaxBackground/ParallaxLayer"]
-margin_top = 120.0
-margin_right = 480.0
-margin_bottom = 200.0
-texture = ExtResource( 4 )
-expand = true
-stretch_mode = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Map" parent="." instance=ExtResource( 1 )]
 
 [node name="Character" parent="." groups=[
 "character",
 ] instance=ExtResource( 3 )]
-process_priority = -1
-position = Vector2( 240, 160 )
+position = Vector2( 224, 136 )
+
+[node name="End" parent="." instance=ExtResource( 2 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -30.0
+
+[node name="StartDelay" type="Timer" parent="Music"]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="end" from="Map" to="." method="_on_Map_end"]

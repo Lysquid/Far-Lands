@@ -1,0 +1,153 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/End/End.gd" type="Script" id=1]
+[ext_resource path="res://ressources/font.tres" type="DynamicFontData" id=2]
+[ext_resource path="res://fonts/pcsenior.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 62
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 27
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 9
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=4]
+length = 6.0
+step = 0.5
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, -100, -0.12, 90.4592, 0.21, -52.8681, -2138.62, -0.49, 210.84, 0.24, -234.966, -2446.18, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1, 2, 3.5 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Text/Title:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( -200, -0.25, 0, 0.25, 0, -200, -0.25, 0, 0.28, 54.4523, -95.2005, -0.61, -55.9644, 0.41, 23.8968, -65.3394, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 2, 3, 4 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Text/Subtext:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Text:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[node name="End" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 0, -2446.18 )
+
+[node name="Text" type="Node2D" parent="Camera2D"]
+position = Vector2( 0, 13.0277 )
+
+[node name="Title" type="Label" parent="Camera2D/Text"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -141.5
+margin_top = -65.3394
+margin_right = 141.5
+margin_bottom = -2.3394
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 1 )
+text = "Far Lands"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtitle" type="Label" parent="Camera2D/Text/Title"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -96.0
+margin_top = -37.5083
+margin_right = 98.0
+margin_bottom = -7.50829
+custom_fonts/font = SubResource( 2 )
+text = "A hike into the"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Subtext" type="Node2D" parent="Camera2D/Text"]
+position = Vector2( 0, 0.105629 )
+
+[node name="Congrats" type="Label" parent="Camera2D/Text/Subtext"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -176.0
+margin_top = 9.0
+margin_right = 160.0
+margin_bottom = 34.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Congrats, you reached the top of those chaotic lands in "
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Thanks" type="Label" parent="Camera2D/Text/Subtext"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -144.0
+margin_top = 40.0
+margin_right = 138.0
+margin_bottom = 65.0
+grow_horizontal = 2
+custom_fonts/font = SubResource( 3 )
+text = "Thank you for playing."
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D"]
+anims/End = SubResource( 4 )
+
+[node name="Delay" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Delay" to="." method="_on_Delay_timeout"]
