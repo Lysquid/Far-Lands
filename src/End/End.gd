@@ -19,5 +19,5 @@ func _on_Delay_timeout() -> void:
 	$Camera2D.make_current()
 	$Camera2D/AnimationPlayer.play("End")
 	
-	$Camera2D/Text/Subtext/Congrats.text += str(complete_time / 60) + "min and "+str(complete_time % 60) +"s"
+	$Camera2D/Text/Subtext/Congrats.text += str(complete_time / 60) + "min "+str(complete_time % 60) +"s."
 	
