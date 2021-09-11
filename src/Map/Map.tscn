@@ -448,7 +448,7 @@ tracks/0/keys = {
 "values": [ Vector2( 240, -3152 ), Vector2( 208, -3192 ), Vector2( 320, -3168 ), Vector2( 320, -3120 ), Vector2( 304, -3160 ) ]
 }
 
-[sub_resource type="Animation" id=44]
+[sub_resource type="Animation" id=32]
 resource_name = "New Anim"
 length = 7.0
 loop = true
@@ -1310,7 +1310,7 @@ tile_data = PoolIntArray( -393218, 536870917, 0, -393212, 536870917, 0, -393209,
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Level3/Island14"]
 autoplay = "New Anim"
 playback_speed = 0.8
-"anims/New Anim" = SubResource( 44 )
+"anims/New Anim" = SubResource( 32 )
 
 [node name="Island15" type="KinematicBody2D" parent="Level3"]
 position = Vector2( 32, -3706.74 )

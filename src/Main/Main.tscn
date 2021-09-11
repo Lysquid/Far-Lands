@@ -17,16 +17,12 @@ script = ExtResource( 5 )
 [node name="Character" parent="." groups=[
 "character",
 ] instance=ExtResource( 3 )]
-position = Vector2( 224, 136 )
+position = Vector2( 223.217, -1405.11 )
 
 [node name="End" parent="." instance=ExtResource( 2 )]
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-volume_db = -30.0
-
-[node name="StartDelay" type="Timer" parent="Music"]
-wait_time = 5.0
-one_shot = true
+volume_db = -10.0
 
 [connection signal="end" from="Map" to="." method="_on_Map_end"]

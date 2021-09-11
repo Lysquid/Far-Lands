@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 		# Godot gives warning if i don't use the returne value
 		var _useless = get_tree().reload_current_scene()
 	if Input.is_action_just_pressed("stop_music"):
-		$Music.stop()
+		$Music.stream_paused = not $Music.stream_paused 
 	
 func _on_Map_end() -> void:
 	$End.play_credits($Character, time)

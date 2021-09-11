@@ -29,12 +29,12 @@ func _physics_process(_delta: float):
 	# VERY IMPORTANT LINE THAT SHIT MADE ME STUCK FOR 2 DAYS
 	var snap_vector = Vector2.DOWN * 3
 	
-	if not $PressedJumpTimer.is_stopped() and not $FloorTimer.is_stopped():
+	if not $PressedJumpTimer.is_stopped() and not $FloorTimer.is_stopped():	
 		$PressedJumpTimer.stop()
 		state_machine.travel("jump")
 		
 		velocity += get_floor_normal() * jump_speed
-		$LeapTimer.start()
+		$LeapTimer.start()	
 		snap_vector = Vector2.ZERO
 		
 		
@@ -70,7 +70,7 @@ func _physics_process(_delta: float):
 			state_machine.travel("fall")
 			
 	# Stuck
-	if Input.is_action_just_pressed("stuck"):
+	if Input.is_action_just_pressed("stuck") and velocity.y >= 0:
 		set_collision_layer_bit(0, false)
 		set_collision_mask_bit(0, false)
 	if Input.is_action_just_released("stuck"):
