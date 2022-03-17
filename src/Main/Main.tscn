@@ -17,7 +17,7 @@ script = ExtResource( 5 )
 [node name="Character" parent="." groups=[
 "character",
 ] instance=ExtResource( 3 )]
-position = Vector2( 223.217, -1405.11 )
+position = Vector2( 224, 136 )
 
 [node name="End" parent="." instance=ExtResource( 2 )]
 
